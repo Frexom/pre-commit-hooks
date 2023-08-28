@@ -1,5 +1,5 @@
-# print_arguments/main.py
 import subprocess
+import re
 
 
 def main():
@@ -18,7 +18,7 @@ def error_output(lines: list[str]):
     print('\033[91m')
     error_report = False
     for line in lines:
-        if "FAILURE" in line:
+        if re.match("^==* FAILURES ==*", line):
             error_report = True
 
         if error_report:
