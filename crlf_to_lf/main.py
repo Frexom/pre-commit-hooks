@@ -10,11 +10,11 @@ UNIX_LINE_ENDING = b'\n'
 def _fix_file(
         filename: str
 ) -> bool:
-    with open(filename, mode='r') as file_processed:
+    with open(filename, mode='rb') as file_processed:
         content = file_processed.read()
 
     fixed_content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
-    with open(filename, mode='w') as file_processed:
+    with open(filename, mode='wb') as file_processed:
         file_processed.write(fixed_content)
 
     return content != fixed_content
