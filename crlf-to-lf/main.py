@@ -32,7 +32,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     return_code = 0
     for filename in args.filenames:
         if _fix_file(filename):
-            print(f"Fixing {filename}'s EOL")
+            print(f"Fixing {filename}'s EOL...")
             return_code = 1
     return return_code
 
