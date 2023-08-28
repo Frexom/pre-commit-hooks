@@ -1,0 +1,7 @@
+-   id: pytest-check
+    name: pytest-check
+    description: This hook runs pytest before committing.
+    entry: pytest-check
+    language: python
+    always_run: true
+    pass_filenames: false
