@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 import argparse
-import os
 from typing import Sequence
 
 
@@ -35,7 +32,6 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"Fixing {filename}'s EOL...")
             return_code = 1
     return return_code
-
 
 if __name__ == "__main__":
     main()
