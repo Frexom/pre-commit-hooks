@@ -37,3 +37,15 @@ repos:
 ### Pytest-check
 
 This hook runs pytest before every commit, in order to be sure that all tests pass when editing the code. **/!\\ Warning /!\\** It is advised not to use this pre-commit hook if your tests do not run in a couple seconds.
+
+If you do have slow tests and fast tests, you can tell Pytest-check to only run the fast tests. For this, you need to specify the `--run-only` argument.
+
+```yaml
+repos:
+-   repo: https://github.com/Frexom/pre-commit-hooks
+    rev: 0.0.1
+    hooks:
+    -   id: pytest-check
+        args: [ "--run-only", "tests/file1.py", "tests/file2.py" ]
+```
+By doing so, only the files `file1.py` and `file2.py` will b ran during the pre-commit hook execution.
