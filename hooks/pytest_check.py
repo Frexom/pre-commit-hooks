@@ -33,13 +33,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     # Going back to the original path
     os.chdir(original_path)
 
-    if result.returncode == 0:
+    if result.returncode == 0 or "no tests ran" in lines[-1]:
         exit(0)
 
     if "failed" in lines[-1] or "error" in lines[-1]:
         error_output(lines)
         exit(1)
 
+    print("\n".join(lines))
     exit(1)
 
 
