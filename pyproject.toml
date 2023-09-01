@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "pre-commit-hooks"
+version = "0.0.1"
+description = "A collection of Frexom's pre-commit hooks"
+authors = ["Frexom <imfrexom@gmail.com>"]
+readme = "README.md"
+license = "AGPL-3.0-only"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+argparse = "^1.4.0"
+pre-commit = "^3.3.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+crlf-to-lf = "pre_commit_hooks.crlf_to_lf:main"
+pytest-check = "pre_commit_hooks.pytest_check:main"
