@@ -5,9 +5,6 @@ description = "A collection of Frexom's pre-commit hooks"
 authors = ["Frexom <imfrexom@gmail.com>"]
 readme = "README.md"
 license = "AGPL-3.0-only"
-package = [
-    {include = "hooks"}
-]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -21,8 +18,8 @@ black = "^23.7.0"
 
 
 [tool.poetry.scripts]
-crlf-to-lf = "pre_commit_hooks.crlf_to_lf:main"
-pytest-check = "pre_commit_hooks.pytest_check:main"
+crlf-to-lf = "hooks.crlf_to_lf:main"
+pytest-check = "hooks.pytest_check:main"
 
 [build-system]
 requires = ["poetry-core"]
