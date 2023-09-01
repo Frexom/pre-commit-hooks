@@ -26,7 +26,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     original_path = os.getcwd()
     os.chdir(repo_root)
 
-    print(f"command : { ['pytest'] + (args.run_only or [])}")
     # Running the pytest command
     result = subprocess.run(["pytest"] + (args.run_only or []), stdout=subprocess.PIPE)
     lines = result.stdout.decode("utf-8").split("\n")[:-1]
@@ -41,13 +40,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         error_output(lines)
         exit(1)
 
-    print("inside the hook")
-    print("\n".join(lines))
     exit(1)
 
 
 def error_output(lines: list[str]):
-    # print('\033[91m')
+    print("\033[91m")
     error_report = False
     for line in lines:
         if re.match("^==* FAILURES ==*", line) or re.match("^==* ERRORS ==*", line):
@@ -55,8 +52,8 @@ def error_output(lines: list[str]):
 
         if error_report:
             pass
-            # print(line)
-    # print('\033[0m')
+            print(line)
+    print("\033[0m")
 
 
 if __name__ == "__main__":
