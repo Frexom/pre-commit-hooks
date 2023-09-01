@@ -1,12 +1,12 @@
 # pre-commit-hooks
 This repo contains the multiple pre-commit hooks I created.
 
-## pre-commit
+## What is pre-commit?
 
 To know more about pre-commit, see [here](https://pre-commit.com/).
 
 
-## Pre-commit config
+## Adding one of my hooks
 After installing pre-commit, you can add the following line in your .pre-commit-config.yaml to add a hook to your repo :
 
 ```yaml
@@ -14,8 +14,10 @@ repos:
 -   repo: https://github.com/Frexom/pre-commit-hooks
     rev: 0.0.1
     hooks:
-    -   id: crlf-to-lf
+    -   id: hook-id
 ```
+
+## The hooks in this repo
 
 ### CRLF-to-LF
 
@@ -30,3 +32,8 @@ repos:
     -   id: crlf-to-lf
         args: [ --keep-crlf ]
 ```
+
+
+### Pytest-check
+
+This hook runs pytest before every commit, in order to be sure that all tests pass when editing the code. **/!\\ Warning /!\\** It is advised not to use this pre-commit hook if your tests do not run in a couple seconds.
