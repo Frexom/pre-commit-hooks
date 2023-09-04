@@ -12,6 +12,7 @@ def _fix_file(
     ignored_extensions: list[str],
 ) -> bool:
     if filename.split(".")[-1].lower() in ignored_extensions:
+        print(f"Skipping {filename}...")
         return False
 
     with open(filename, mode="rb") as file_processed:
@@ -33,18 +34,18 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     parser.add_argument("--keep-crlf", action="store_true")
     parser.add_argument(
-        "--ignore-extensions",
+        "--ignore",
         nargs="*",
         help="The file extensions to ignore.",
     )
     parser.add_argument("filenames", nargs="*", help="Filenames to fix")
     args = parser.parse_args(argv)
 
-    args.ignore_extensions = [ext.lower() for ext in args.ignore_extensions]
+    args.ignore = [ext.lower() for ext in args.ignore or []]
 
     return_code = 0
     for filename in args.filenames:
-        if _fix_file(filename, args.keep_crlf, args.ignore_extensions):
+        if _fix_file(filename, args.keep_crlf, args.ignore):
             print(f"Fixing {filename}'s EOL...")
             return_code = 1
     return return_code

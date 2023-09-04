@@ -33,6 +33,15 @@ repos:
         args: [ --keep-crlf ]
 ```
 
+You may also need to ignore some files, to do so, you can use the `--ignore` argument to ignore files with a given extensions the following way :
+```yaml
+-   repo: https://github.com/Frexom/pre-commit-hooks
+    rev: 0.0.2
+    hooks :
+    -   id : crlf-to-lf
+        args: ["--ignore", "db", "ttf", "--" ]
+```
+**Do not** forget the `--` command separator when specifying the `--ignore` args, or all you files will be treated as extensions.
 
 ### Pytest-check
 
